@@ -24,10 +24,15 @@ const UserSchema=new mongoose.Schema(
             type:String,
             trim:true,
             required:true,
-            set:(password)=>
-        }
+            set:(password)=> passwordEncrypt(password)
+        },
+        firstname:String,
+        lastname:String,
     },
     {
-
+        collection:"user",
+        timestamps:true
     }
 )
+
+module.exports= mongoose.model("User",UserSchema)
