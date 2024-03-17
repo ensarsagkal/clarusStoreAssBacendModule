@@ -12,6 +12,10 @@ require("dotenv").config()
  const HOST=process.env.HOST
 require("./src/db")     //*db connection
 
+const session= require("cookie-session")   //*cookie sessions
+app.use(session({secret:process.env.SECRET_KEY}))
+
+
 
 app.use(require("./src/errorHandler"))    //* errorhandler 
 
