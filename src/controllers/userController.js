@@ -55,8 +55,38 @@ module.exports= {
     },
 
     //* login controll and session configs
-    login:async (req,res)=>{},
+    login:async (req,res)=>{
+        const {email,password}=req.body  //* dest. req.body
+        if(email && password){
+            const user= await User.findOne({email})  //* finding user via his mail
+            if(user && password == passwordEncrypt(password)){
+                req.session.id=user.id
+                req.session.remindMe=req.body.remindMe,
+                req.sessionOptions.maxAge=1000*60*60*24*3 //* setting for 3 days-cookie
+
+                res.status(200).send({
+                    error:false,
+                    message: "login OK",
+                    user
+                })
+            }else{
+                res.errorStatusCode=401
+                throw new Error('Login parameters are not true.')
+            }
+        }else{
+            res.errorStatusCode = 401
+            throw new Error('Email and password are required.')
+        } 
+        
+    },
 
     //* logout operation
-    logout:async (req,res)=>{},
+    logout:async (req,res)=>{
+
+        req.session= null   //* session destroy
+        res.status(200).send({
+            error:false,
+            message:"logout OK"
+        })
+    },
 }
