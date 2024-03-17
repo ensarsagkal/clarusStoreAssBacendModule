@@ -15,7 +15,7 @@ require("./src/db")     //*db connection
 const session= require("cookie-session")   //*cookie sessions
 app.use(session({secret:process.env.SECRET_KEY}))
 
-
+app.use("./user",require("./src/routes/userRouter"))  //* consuming user route,controller and model
 
 app.use(require("./src/errorHandler"))    //* errorhandler 
 
