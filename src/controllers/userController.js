@@ -9,7 +9,7 @@ const passwordEncrypt=require("../helpers/passwordEncrypte")
  
 module.exports= {
     //*get all users
-    list:async (req,res)=>{
+  /*  list:async (req,res)=>{
         const data= await User.find()
         res.status(200).send({
             error: false,
@@ -52,7 +52,7 @@ module.exports= {
     delete:async (req,res)=>{
         const data= await User.deleteOne({_id:req.params.userId})
         res.sendStatus(data.deletedCount>=1? 204:404)
-    },
+    }, */
 
     //* login controll and session configs
     login:async (req,res)=>{
