@@ -97,5 +97,4 @@ module.exports={
     ProductCategory:mongoose.model("ProductCategory",productCategorySchema),
     Product: mongoose.model("Product",productSchema)
 
-
 }
