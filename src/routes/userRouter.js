@@ -14,7 +14,7 @@ router.all("/logout",User.logout)
 
 
 //*    CRUD's
-router.route("/").get(User.list).post("User.create")
+router.route("/").get(User.list).post(User.create)
 
 router.route("/:userId").get(User.read).put(User.update).patch(User.update).delete(User.delete)
 

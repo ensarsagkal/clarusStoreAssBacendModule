@@ -13,7 +13,7 @@ const UserSchema=new mongoose.Schema(
         email:{
             type:String,
             trim:true,
-            uniuqe:true,
+            unique:true,
             required:[true,"Email must be required"],
             validate:[
                 (email)=>(email.includes("@")&&email.includes(".com")),
