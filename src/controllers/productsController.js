@@ -33,7 +33,7 @@ module.exports.Product={
     },
     
     read:async (req,res)=>{
-        const data= await Product.findOne({_id:req.params.productId}) //& PARAM'a bak
+        const data= await Product.findOne({_id:req.params.productId}).populate("productCategoryId",name - _id) //& PARAM'a bak
         res.status(200).send({
             error:false,
             data:data
