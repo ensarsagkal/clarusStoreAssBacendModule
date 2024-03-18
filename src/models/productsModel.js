@@ -23,7 +23,7 @@ const productCategorySchema= new mongoose.Schema({
         unique:true
     }
 },{
-    collection:"productCategory",
+    collection:"productCategories",
     timestamps:true
 })
 
@@ -79,7 +79,7 @@ const productSchema= new mongoose.Schema({
     validate:[isValidURL,"URL must be required"]
   }]
     },{
-        collection:"product",
+        collection:"products",
         timestamps:true
     })
 
