@@ -4,6 +4,7 @@ const { urlencoded } = require("express");
 CLARUS STORE
 ------------------------------------------------------- */
 const mongoose=require("mongoose")
+const validator=require("mongoose-validator")
 
  function isValidURL(string){
     try {
@@ -12,6 +13,10 @@ const mongoose=require("mongoose")
     } catch (error) {
         return false
     }
+ }
+ function imageNumber(image){
+    return image.length <= 3
+  
  }
 
 //* Category schema
@@ -76,7 +81,12 @@ const productSchema= new mongoose.Schema({
   images:[{
     type:String,
     required:true,
-    validate:[isValidURL,"URL must be required"]
+    validate:[
+        {validator:isValidURL,message:"URL must be required"},
+        {validator:imageNumber,message:"restricted by 3 images "}],
+
+
+    
   }]
     },{
         collection:"products",
